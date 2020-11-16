@@ -1,5 +1,8 @@
 #include "filler.h"
 
+/*
+* 45 is dot .
+*/
 
 char		calc_distance(t_filler *filler, int x, int y)
 {
@@ -25,6 +28,8 @@ char		calc_distance(t_filler *filler, int x, int y)
 		}
 		h++;
 	}
+	if (dist > 45)
+		dist++;
 	return ((char)dist);
 }
 
