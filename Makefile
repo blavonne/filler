@@ -9,7 +9,13 @@ L_LIB = -L $(L_ROOT) -lft
 #FLAGS--------------------------------------------------------------------------
 FLAGS = -Wall -Werror -Wextra
 #SOURCES------------------------------------------------------------------------
-SRC = main.c
+SRC = main.c\
+	$(SRC_DIR)parse_player.c\
+	$(SRC_DIR)parse_map.c\
+	$(SRC_DIR)parse_piece.c\
+	$(SRC_DIR)filler_loop.c\
+	$(SRC_DIR)solution.c\
+	$(SRC_DIR)cleaner.c
 OBJ = $(SRC:%.c=%.o)
 #HEADERS------------------------------------------------------------------------
 HEADERS = -I $(INC_DIR) -I $(L_ROOT)
@@ -34,4 +40,4 @@ fclean: clean
 	$(MAKE) -C $(L_ROOT) fclean
 	rm -rf $(NAME)
 re: fclean all
-.PHONY: all clean fclean re make_libft 
+.PHONY: all clean fclean re make_libft
