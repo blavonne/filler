@@ -57,4 +57,5 @@ int				piece_init(t_filler *filler);
 int				parse_piece(t_filler *filler, char *line);
 int				solution(t_filler *filler);
 
+int				to_file(t_filler *filler);
 #endif

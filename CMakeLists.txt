@@ -6,5 +6,5 @@ include_directories(libft)
 include_directories(includes)
 add_subdirectory(libft)
 
-add_executable(filler main.c srcs/parse_player.c srcs/cleaner.c srcs/filler_loop.c srcs/parse_map.c srcs/parse_piece.c srcs/solution.c)
+add_executable(filler main.c srcs/parse_player.c srcs/cleaner.c srcs/filler_loop.c srcs/parse_map.c srcs/parse_piece.c srcs/solution.c srcs/to_file.c)
 target_link_libraries(filler libft)

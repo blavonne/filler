@@ -36,7 +36,6 @@ int			filler_loop(t_filler *filler)
 	line = 0;
 	fd = open("/home/blavonne/CLionProjects/filler/test.txt", O_RDWR|O_APPEND\
 	|O_CREAT);
-	filler = filler;
 	while (get_next_line(0, &line) > 0)
 	{
 		write(fd, "Filler loop: ", 13);
