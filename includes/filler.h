@@ -17,8 +17,12 @@ struct			s_point
 
 struct			s_player
 {
+	t_point	left_top;
+	t_point	right_bottom;
+	t_point	lt_prev;
+	t_point	rb_prev;
+	t_point	priority;
 	char	sign;
-	t_point	start;
 };
 
 struct			s_piece
