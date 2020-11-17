@@ -21,7 +21,7 @@ int			to_file(t_filler *filler)
 	write(fd, "\nMap is:\n", 9);
 	while (i < filler->map.h)
 	{
-		write(fd, filler->map.map[i], ft_strlen(filler->map.map[i]));
+		write(fd, filler->map.map[i], ft_strlen((char *)filler->map.map[i]));
 		write(fd, "\n", 1);
 		i++;
 	}

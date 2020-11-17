@@ -10,12 +10,17 @@ L_LIB = -L $(L_ROOT) -lft
 FLAGS = -Wall -Werror -Wextra
 #SOURCES------------------------------------------------------------------------
 SRC = main.c\
-	$(SRC_DIR)parse_player.c\
+	$(SRC_DIR)cleaner.c\
+	$(SRC_DIR)figure_handler.c\
+	$(SRC_DIR)figure_place.c\
+	$(SRC_DIR)filler_loop.c\
+	$(SRC_DIR)heatmap.c\
 	$(SRC_DIR)parse_map.c\
 	$(SRC_DIR)parse_piece.c\
-	$(SRC_DIR)filler_loop.c\
+	$(SRC_DIR)parse_player.c\
+	$(SRC_DIR)point_handler.c\
 	$(SRC_DIR)solution.c\
-	$(SRC_DIR)cleaner.c
+	$(SRC_DIR)to_file.c
 OBJ = $(SRC:%.c=%.o)
 #HEADERS------------------------------------------------------------------------
 HEADERS = -I $(INC_DIR) -I $(L_ROOT)

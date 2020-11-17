@@ -24,7 +24,7 @@ int			parse_w_h(t_filler *filler, char *line)
 		filler->piece.h = ft_atoi(split[1]);
 		filler->piece.w = ft_atoi(split[2]);
 	}
-	clean_split(&split);
+	clean_two_dim((void ***)&split);
 	return (1);
 }
 
@@ -57,7 +57,7 @@ int			filler_loop(t_filler *filler)
 	}
 	write(fd, "Finish\n", 7);
 	free(line);
-	clean_split(&filler->map.map);
+	clean_two_dim((void ***)&filler->map.map);
 	close(fd);
 	return (1);
 }

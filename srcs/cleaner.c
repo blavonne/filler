@@ -1,17 +1,18 @@
 #include "filler.h"
 
-void		clean_split(char ***arr)
+void		clean_two_dim(void ***arr)
 {
-	char	**ptr;
+	unsigned char	**ptr;
 	int		i;
 
 	i = 0;
-	ptr = *arr;
+	ptr = (unsigned char **)*arr;
 	while (ptr[i])
 	{
 		free(ptr[i]);
+		ptr[i] = NULL;
 		i++;
 	}
 	free(ptr);
-	ptr = NULL;
+	*arr = NULL;
 }

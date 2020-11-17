@@ -1,14 +1,14 @@
 #include "filler.h"
 
-int				emergency_clean(int last, char ***arr)
+int				emergency_clean(int last, unsigned char ***arr)
 {
-	char	**tmp;
+	unsigned char	**tmp;
 
 	tmp = *arr;
 	while (--last >= 0)
 		free(tmp[last]);
 	free(tmp);
-	tmp = NULL;
+	*arr = NULL;
 	return (0);
 }
 
@@ -19,13 +19,13 @@ int				map_init(t_filler *filler)
 	i = 0;
 	if (filler->map.w && filler->map.h && !filler->map.map)
 	{
-		if (!(filler->map.map = (char **)malloc(sizeof(char *) *\
+		if (!(filler->map.map = (unsigned char **)malloc(sizeof(char *) *\
 		(filler->map.h + 1))))
 			return (0);
 		filler->map.map[filler->map.h] = NULL;
 		while (i < filler->map.h)
 		{
-			if (!(filler->map.map[i] = (char *)malloc(sizeof(char) *\
+			if (!(filler->map.map[i] = (unsigned char *)malloc(sizeof(char) *\
 			(filler->map.w + 1))))
 				return (emergency_clean(i, &filler->map.map));
 			i++;
@@ -48,7 +48,8 @@ int				parse_map(t_filler *filler, char *line)
 		{
 			if (get_next_line(0, &tmp) > 0)
 			{
-				filler->map.map[i] = ft_strcpy(filler->map.map[i], tmp + 4);
+				filler->map.map[i] = (unsigned char *)ft_strcpy(\
+				(char *)filler->map.map[i], tmp + 4);
 				ft_strdel(&tmp);
 				i++;
 			}

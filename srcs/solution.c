@@ -1,7 +1,5 @@
 #include "filler.h"
 
-
-
 int			find_place(t_filler *filler)
 {
 	int		h;
@@ -45,7 +43,7 @@ int			solution(t_filler *filler)
 		cut_figure(filler);
 		find_place(filler);
 		normalize_place(filler);
-		clean_split(&filler->piece.piece);
+		clean_two_dim((void ***)&filler->piece.piece);
 		ft_putnbr(filler->piece.place.x);
 		ft_putchar(32);
 		ft_putnbr(filler->piece.place.y);
