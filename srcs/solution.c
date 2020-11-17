@@ -1,57 +1,33 @@
 #include "filler.h"
 
-/*
-* 45 is dot .
-*/
 
-char		calc_distance(t_filler *filler, int x, int y)
+
+
+
+int			put_figure(t_filler *filler)
 {
 	int		h;
 	int		w;
-	int		dist;
-	int		min_dist;
+	int		sum;
+	int		min_sum;
+	t_point	res;
 
 	h = 0;
-	min_dist = filler->map.h * filler->map.w;
+	min_sum = filler->map.h * filler->map.w;
 	while (h < filler->map.h)
 	{
 		w = 0;
 		while (w < filler->map.w)
 		{
-			if (filler->map.map[h][w] == filler->he.sign)
+			if (filler->map.map[h][w] == filler->me.sign)
 			{
-				dist = ft_abs(w - x) + ft_abs(h - y);
-				if (dist < min_dist)
-					min_dist = dist;
+				sum = try_to(filler);
 			}
-			w++;
 		}
-		h++;
 	}
-	if (dist > 45)
-		dist++;
-	return ((char)dist);
 }
 
-int			heatmap(t_filler *filler)
-{
-	int		h;
-	int		w;
 
-	h = 0;
-	while (h < filler->map.h)
-	{
-		w = 0;
-		while (w < filler->map.w)
-		{
-			if (filler->map.map[h][w] == '.')
-				filler->map.map[h][w] = calc_distance(filler, w, h);
-			w++;
-		}
-		h++;
-	}
-	return (0);
-}
 
 int			solution(t_filler *filler)
 {
@@ -59,6 +35,8 @@ int			solution(t_filler *filler)
 	{
 		to_file(filler);
 		heatmap(filler);
+		cut_figure(filler);
+		put_figure(filler);
 		clean_split(&filler->piece.piece);
 	}
 	return (1);
