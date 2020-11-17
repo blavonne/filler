@@ -2,8 +2,6 @@
 
 
 
-
-
 int			put_figure(t_filler *filler)
 {
 	int		h;
@@ -21,7 +19,7 @@ int			put_figure(t_filler *filler)
 		{
 			if (filler->map.map[h][w] == filler->me.sign)
 			{
-				sum = try_to(filler);
+				sum = find_min(filler, w, h);
 			}
 		}
 	}

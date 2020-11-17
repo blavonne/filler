@@ -35,11 +35,11 @@ struct			s_piece
 	int		real_h;
 };
 
-struct			s_map
+struct				s_map
 {
-	char		**map;
-	int			w;
-	int			h;
+	unsigned char	**map;
+	int				w;
+	int				h;
 };
 
 struct			s_filler
@@ -67,5 +67,6 @@ int				heatmap(t_filler *filler);
 
 t_point			point_init(int x, int y);
 void			cut_figure(t_filler *filler);
+int				find_min(t_filler *filler, int w, int h);
 int				to_file(t_filler *filler);
 #endif

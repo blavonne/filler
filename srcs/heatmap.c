@@ -1,11 +1,25 @@
 #include "filler.h"
 
+int				set_exception(int dist)
+{
+	if (dist <= 45)
+		return (dist);
+	if (dist >= 46)
+		dist++;
+	if (dist >= 79)
+		dist++;
+	if (dist >= 88)
+		dist++;
+	return (dist);
+}
+
 /*
-* 45 is dot .
+* 46 is dot .
 * 79 is 'O'
+* 88 is 'X'
 */
 
-char		calc_distance(t_filler *filler, int x, int y)
+unsigned char	calc_distance(t_filler *filler, int x, int y)
 {
 	int		h;
 	int		w;
@@ -29,12 +43,12 @@ char		calc_distance(t_filler *filler, int x, int y)
 		}
 		h++;
 	}
-	if ((dist > 45 && dist < 79) || dist > 79)
-		dist++;
-	return ((char)dist);
+	if (dist >= 46)
+		dist = set_exception(dist);
+	return (dist);
 }
 
-int			heatmap(t_filler *filler)
+int				heatmap(t_filler *filler)
 {
 	int		h;
 	int		w;
