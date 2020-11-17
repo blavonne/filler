@@ -12,7 +12,7 @@ int		set_player_sign(char position, t_filler *filler)
 		else
 		{
 			filler->me.sign = 'X';
-			filler->me.sign = 'O';
+			filler->he.sign = 'O';
 		}
 		return (1);
 	}
