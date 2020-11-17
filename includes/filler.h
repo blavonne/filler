@@ -72,4 +72,5 @@ void			cut_figure(t_filler *filler);
 int				find_min(t_filler *filler, int w, int h, t_point *res);
 int				to_file(t_filler *filler);
 void			heat_to_file(t_filler *filler);
+void			figure_to_file(t_filler *filler);
 #endif
