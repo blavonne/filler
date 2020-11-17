@@ -17,7 +17,10 @@ int			find_place(t_filler *filler)
 		{
 			sum = find_min(filler, w, h, &res);
 			if (sum && sum < min_sum)
+			{
+				min_sum = sum;
 				filler->piece.place = res;
+			}
 			w++;
 		}
 		h++;
@@ -36,19 +39,30 @@ void		normalize_place(t_filler *filler)
 
 int			solution(t_filler *filler)
 {
+	int		fd;
+
 	if (filler->map.map && filler->piece.piece)
 	{
+		fd = open("/home/blavonne/CLionProjects/filler/test.txt", O_RDWR|O_APPEND\
+	|O_CREAT);
 		to_file(filler);
 		heatmap(filler);
+		heat_to_file(filler);
 		cut_figure(filler);
 		find_place(filler);
 		normalize_place(filler);
 		clean_two_dim((void ***)&filler->piece.piece);
+		ft_putstr_fd("My coords: ", fd);
+		ft_putstr_fd(ft_itoa(filler->piece.place.x), fd);
+		ft_putstr_fd(" ", fd);
+		ft_putstr_fd(ft_itoa(filler->piece.place.y), fd);
+		ft_putstr_fd("\n", fd);
 		ft_putnbr(filler->piece.place.x);
 		ft_putchar(32);
 		ft_putnbr(filler->piece.place.y);
 		ft_putchar('\n');
 		ft_bzero(&filler->piece, sizeof(t_piece));
+		close(fd);
 	}
 	return (1);
 }

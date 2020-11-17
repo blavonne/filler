@@ -42,7 +42,7 @@ int				parse_map(t_filler *filler, char *line)
 
 	tmp = 0;
 	i = 0;
-	if (line && ft_strlen(line) > 8 && !ft_strncmp(line, "    0123", 8))
+	if (line && !ft_strncmp(line, "    0123", 8))
 	{
 		while (i < filler->map.h)
 		{

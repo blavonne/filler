@@ -2,8 +2,7 @@
 
 int				set_exception(int dist)
 {
-	if (dist <= 45)
-		return (dist);
+	dist += 32;
 	if (dist >= 46)
 		dist++;
 	if (dist >= 79)
@@ -43,8 +42,7 @@ unsigned char	calc_distance(t_filler *filler, int x, int y)
 		}
 		h++;
 	}
-	if (dist >= 46)
-		dist = set_exception(dist);
+	dist = set_exception(dist);
 	return (dist);
 }
 

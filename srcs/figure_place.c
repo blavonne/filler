@@ -34,7 +34,7 @@ int			find_min(t_filler *filler, int w, int h, t_point *res)
 		j++;
 		h++;
 	}
-	if (j == filler->piece.bottom.y && i == filler->piece.right.x)
+	if (j == filler->piece.bottom.y && i == filler->piece.right.x && cross == 1)
 		return (sum);
 	return (0);
 }
