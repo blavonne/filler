@@ -1,5 +1,29 @@
 #include "filler.h"
 
+void		start_from(int *y, t_filler *filler)
+{
+	int		h;
+	int		w;
+
+	h = 0;
+	while (h < filler->map.h)
+	{
+		w = 0;
+		while (w < filler->map.w)
+		{
+			if (filler->map.map[h][w] == filler->me.sign)
+			{
+				*y = h - filler->piece.real_h;
+				if (*y < 0)
+					*y = filler->piece.real_h - 1;
+				return ;
+			}
+			w++;
+		}
+		h++;
+	}
+}
+
 int			find_place(t_filler *filler)
 {
 	int		h;
@@ -12,16 +36,28 @@ int			find_place(t_filler *filler)
 	sum = 0;
 	min_sum = filler->map.h * filler->map.w;
 	res = point_init(0, 0);
+	start_from(&h, filler);
 	while (h < filler->map.h)
 	{
 		w = 0;
 		while (w < filler->map.w)
 		{
 			sum = find_min(filler, w, h, &res);
-			if (sum && sum < min_sum)
+			if (filler->me.sign == 'O')
 			{
-				min_sum = sum;
-				filler->piece.place = res;
+				if (sum && sum <= min_sum)
+				{
+					min_sum = sum;
+					filler->piece.place = res;
+				}
+			}
+			else if (filler->me.sign == 'X')
+			{
+				if (sum && sum < min_sum)
+				{
+					min_sum = sum;
+					filler->piece.place = res;
+				}
 			}
 			w++;
 		}
