@@ -2,7 +2,7 @@
 
 
 
-int			put_figure(t_filler *filler)
+int			find_place(t_filler *filler)
 {
 	int		h;
 	int		w;
@@ -17,15 +17,24 @@ int			put_figure(t_filler *filler)
 		w = 0;
 		while (w < filler->map.w)
 		{
-			if (filler->map.map[h][w] == filler->me.sign)
-			{
-				sum = find_min(filler, w, h);
-			}
+			sum = find_min(filler, w, h, &res);
+			if (sum && sum < min_sum)
+				filler->piece.place = res;
+			w++;
 		}
+		h++;
 	}
+	if (sum)
+		return (1);
+	else
+		return (0);
 }
 
-
+void		normalize_place(t_filler *filler)
+{
+	filler->piece.place.x -= filler->piece.left.x;
+	filler->piece.place.y -= filler->piece.top.y;
+}
 
 int			solution(t_filler *filler)
 {
@@ -34,8 +43,14 @@ int			solution(t_filler *filler)
 		to_file(filler);
 		heatmap(filler);
 		cut_figure(filler);
-		put_figure(filler);
+		find_place(filler);
+		normalize_place(filler);
 		clean_split(&filler->piece.piece);
+		ft_putnbr(filler->piece.place.x);
+		ft_putchar(32);
+		ft_putnbr(filler->piece.place.y);
+		ft_putchar('\n');
+		ft_bzero(&filler->piece, sizeof(t_piece));
 	}
 	return (1);
 }

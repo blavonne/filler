@@ -100,5 +100,11 @@ void			cut_figure(t_filler *filler)
 	set_left(filler);
 	set_right(filler);
 	set_bottom(filler);
+	filler->piece.left_top = point_init(filler->piece.left.x,\
+	filler->piece.top.y);
+	filler->piece.right_bottom = point_init(filler->piece.right.x,\
+	filler->piece.bottom.y);
+	filler->piece.real_h = filler->piece.bottom.y - filler->piece.top.y + 1;
+	filler->piece.real_w = filler->piece.right.x - filler->piece.left.x + 1;
 }
 
