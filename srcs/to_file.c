@@ -56,11 +56,6 @@ void	heat_to_file(t_filler *filler)
 		ft_putstr_fd("\n", fd);
 		i++;
 	}
-	ft_putstr_fd("Priority is ", fd);
-	ft_putstr_fd(ft_itoa(filler->he.priority.x), fd);
-	ft_putstr_fd(" ", fd);
-	ft_putstr_fd(ft_itoa(filler->he.priority.y), fd);
-	ft_putstr_fd("\n", fd);
 	close(fd);
 }
 

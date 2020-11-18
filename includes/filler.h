@@ -17,11 +17,8 @@ struct			s_point
 
 struct			s_player
 {
-	t_point	left_top;
-	t_point	right_bottom;
-	t_point	lt_prev;
-	t_point	rb_prev;
-	t_point	priority;
+	int		top;
+	int		bottom;
 	char	sign;
 };
 
@@ -54,6 +51,7 @@ struct			s_filler
 	t_player	he;
 	t_map		map;
 	t_piece		piece;
+	char		position;
 	int			iter;
 };
 

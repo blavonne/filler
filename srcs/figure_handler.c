@@ -1,6 +1,6 @@
 #include "filler.h"
 
-void			set_top(t_filler *filler)
+void			set_top_f(t_filler *filler)
 {
 	int		h;
 	int		w;
@@ -22,7 +22,7 @@ void			set_top(t_filler *filler)
 	}
 }
 
-void			set_left(t_filler *filler)
+void			set_left_f(t_filler *filler)
 {
 	int		h;
 	int		w;
@@ -47,7 +47,7 @@ void			set_left(t_filler *filler)
 	filler->piece.left = left;
 }
 
-void			set_right(t_filler *filler)
+void			set_right_f(t_filler *filler)
 {
 	int		h;
 	int		w;
@@ -72,7 +72,7 @@ void			set_right(t_filler *filler)
 	filler->piece.right = right;
 }
 
-void			set_bottom(t_filler *filler)
+void			set_bottom_f(t_filler *filler)
 {
 	int		h;
 	int		w;
@@ -96,10 +96,10 @@ void			set_bottom(t_filler *filler)
 
 void			cut_figure(t_filler *filler)
 {
-	set_top(filler);
-	set_left(filler);
-	set_right(filler);
-	set_bottom(filler);
+	set_top_f(filler);
+	set_left_f(filler);
+	set_right_f(filler);
+	set_bottom_f(filler);
 	filler->piece.left_top = point_init(filler->piece.left.x,\
 	filler->piece.top.y);
 	filler->piece.right_bottom = point_init(filler->piece.right.x,\

@@ -61,6 +61,12 @@ rm -f filler.trace > /dev/null
 
 file_i=0
 
+if [ "$player2" != "" ] && [ "$player1" = "" ]; then
+	player1=$player2
+	p1_path=$p2_path
+	player2=""
+fi
+
 if [ "$player2" != "" ]; then
 	if [ "$map" != "" ]; then
 		for ((i=0; i<count; i++)); do
