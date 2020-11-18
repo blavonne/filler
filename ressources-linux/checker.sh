@@ -1,12 +1,14 @@
 #!/bin/bash
+#-------------------------------------------------------------------------------
+# This is filler checker for Linux by Barrett Lavonne
 #colors-------------------------------------------------------------------------
 green=\\e[1\;32m
 red=\\e[1\;31m
 rose=\\e[1\;1\;35m
 end_c=\\e[0m
-#-------------------------------------------------------------------------------
+#variables----------------------------------------------------------------------
 count=5
-#there is no carli cause is lunix version she does not do nothing---------------
+#there is no carli below cause is lunix version she does not move---------------
 champs=("abanlin" "hcao" "champely" "grati" "superjeannot")
 maps=("map00" "map01" "map02")
 
