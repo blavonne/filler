@@ -1,20 +1,21 @@
 #include "filler.h"
 
-int			find_min(t_filler *filler, int w, int h, t_point *res)
+int			find_min(t_filler *filler, int w, int h)
 {
 	int		i;
 	int		j;
 	int		cross;
 	int		sum;
+	int		w_default;
 
 	j = filler->piece.top.y;
 	cross = 0;
-	(*res) = point_init(w, h);
+	w_default = w;
 	sum = 0;
 	while (j <= filler->piece.bottom.y && h < filler->map.h)
 	{
 		i = filler->piece.left.x;
-		w = (*res).x;
+		w = w_default;
 		while (i <= filler->piece.right.x && w < filler->map.w)
 		{
 			if (filler->piece.piece[j][i] == '*')

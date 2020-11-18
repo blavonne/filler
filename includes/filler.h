@@ -18,7 +18,6 @@ struct			s_point
 struct			s_player
 {
 	int		top;
-	int		bottom;
 	char	sign;
 };
 
@@ -27,14 +26,11 @@ struct			s_piece
 	char	**piece;
 	t_point	top; //координата начала расположения фигуры в исходом писе
 	t_point	left;
-	t_point	left_top;
-	t_point	right_bottom;
 	t_point	bottom;
 	t_point	right;
 	t_point	place;
 	int		w;
 	int		h;
-	int		real_w;
 	int		real_h;
 };
 
@@ -51,12 +47,9 @@ struct			s_filler
 	t_player	he;
 	t_map		map;
 	t_piece		piece;
-	char		position;
 	int			iter;
 };
 
-
-void			set_w_h(int *w, int *h, char *line);
 
 int				parse_player(t_filler *filler);
 int				filler_loop(t_filler *filler);
@@ -71,8 +64,7 @@ int				solution(t_filler *filler);
 int				heatmap(t_filler *filler);
 t_point			point_init(int x, int y);
 void			cut_figure(t_filler *filler);
-int				find_min(t_filler *filler, int w, int h, t_point *res);
+int				find_min(t_filler *filler, int w, int h);
 int				to_file(t_filler *filler);
 void			heat_to_file(t_filler *filler);
-void			figure_to_file(t_filler *filler);
 #endif

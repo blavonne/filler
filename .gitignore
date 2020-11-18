@@ -5,3 +5,6 @@ trace*.txt
 result.txt
 test.txt
 trouble.txt
+filler.trace
+*.o
+*.d

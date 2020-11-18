@@ -3,20 +3,14 @@
 void			set_top_f(t_filler *filler)
 {
 	int		h;
-	int		w;
 
 	h = 0;
 	while (h < filler->piece.h)
 	{
-		w = 0;
-		while (w < filler->piece.w)
+		if (ft_strchr(filler->piece.piece[h], '*'))
 		{
-			if (filler->piece.piece[h][w] == '*')
-			{
-				filler->piece.top = point_init(w, h);
-				return ;
-			}
-			w++;
+			filler->piece.top = point_init(0, h);
+			return ;
 		}
 		h++;
 	}
@@ -100,11 +94,5 @@ void			cut_figure(t_filler *filler)
 	set_left_f(filler);
 	set_right_f(filler);
 	set_bottom_f(filler);
-	filler->piece.left_top = point_init(filler->piece.left.x,\
-	filler->piece.top.y);
-	filler->piece.right_bottom = point_init(filler->piece.right.x,\
-	filler->piece.bottom.y);
 	filler->piece.real_h = filler->piece.bottom.y - filler->piece.top.y + 1;
-	filler->piece.real_w = filler->piece.right.x - filler->piece.left.x + 1;
 }
-
