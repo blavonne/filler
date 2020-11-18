@@ -17,7 +17,6 @@ struct			s_point
 
 struct			s_player
 {
-	int		top;
 	char	sign;
 };
 
