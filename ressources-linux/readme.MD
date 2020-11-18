@@ -23,6 +23,7 @@ Use flag -m with full path to map
 Use flag -g with some integer value  
 For example, n = 20  
 `bash ./checker -p1 /path/to/your/player/name.filler -g 20`  
+
 ---
 You can mix flags. For example, to play with Hcao as p1 on map00 3 times:  
 `bash ./checker -p2 /path/to/your/player/name.filler -p1 ./champions/hcao.filler -m ./maps/map00 -g 3`  
