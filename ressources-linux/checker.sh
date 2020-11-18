@@ -55,6 +55,7 @@ done
 
 rm -f trace*.txt > /dev/null
 rm -f result.txt > /dev/null
+rm -f filler.trace > /dev/null
 
 file_i=0
 
@@ -142,4 +143,4 @@ else
 fi
 
 echo -e "${green}All games are done, see${end_c} ${rose}trace_N.txt${end_c} ${green}and${end_c} ${rose}result.txt.${end_c}"
-./stat.sh 
+./stat.sh
