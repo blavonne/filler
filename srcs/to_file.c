@@ -45,9 +45,9 @@ void	heat_to_file(t_filler *filler)
 		while (j < filler->map.w)
 		{
 			if (filler->map.map[i][j] == filler->me.sign)
-				ft_putstr_fd(ft_itoa(11), fd);
+				ft_putstr_fd("O", fd);
 			else if (filler->map.map[i][j] == filler->he.sign)
-				ft_putstr_fd(ft_itoa(22), fd);
+				ft_putstr_fd("X", fd);
 			else
 				ft_putstr_fd(ft_itoa(filler->map.map[i][j]), fd);
 			ft_putstr_fd(" ", fd);
@@ -56,6 +56,11 @@ void	heat_to_file(t_filler *filler)
 		ft_putstr_fd("\n", fd);
 		i++;
 	}
+	ft_putstr_fd("Priority is ", fd);
+	ft_putstr_fd(ft_itoa(filler->he.priority.x), fd);
+	ft_putstr_fd(" ", fd);
+	ft_putstr_fd(ft_itoa(filler->he.priority.y), fd);
+	ft_putstr_fd("\n", fd);
 	close(fd);
 }
 

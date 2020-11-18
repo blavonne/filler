@@ -54,6 +54,7 @@ struct			s_filler
 	t_player	he;
 	t_map		map;
 	t_piece		piece;
+	int			iter;
 };
 
 
@@ -70,7 +71,6 @@ int				piece_init(t_filler *filler);
 int				parse_piece(t_filler *filler, char *line);
 int				solution(t_filler *filler);
 int				heatmap(t_filler *filler);
-
 t_point			point_init(int x, int y);
 void			cut_figure(t_filler *filler);
 int				find_min(t_filler *filler, int w, int h, t_point *res);

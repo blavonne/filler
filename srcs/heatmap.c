@@ -34,7 +34,8 @@ unsigned char	calc_distance(t_filler *filler, int x, int y)
 		{
 			if (filler->map.map[h][w] == filler->he.sign)
 			{
-				dist = ft_abs(w - x) + ft_abs(h - y);
+//				dist = ft_abs(w - x) + ft_abs(h - y);
+				dist = (int)ft_max(ft_abs(w - x), ft_abs(h - y));
 				if (dist < min_dist)
 					min_dist = dist;
 			}
