@@ -1,9 +1,9 @@
 # Filler checker for linux by Barrett Lavonne  
 ## Usage:  
-Use bash, not shell  
-Do not forget slash in players path (VM reads only full path to player)  
-This checker is only for LINUX  
-Carli is not in list of champions to play by default cause she does not move,
+- Use bash, not shell  
+- Do not forget slash in players path (VM reads only full path to player)  
+- This checker is only for LINUX  
+- Carli is not in list of champions to play by default cause she does not move,
 but you can add she manually via `vim checker.sh`:  
 ```shell script
 #add "carli" or someone else is this list:
