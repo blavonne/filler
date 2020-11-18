@@ -79,3 +79,4 @@ Total score:
 superjeannot         6
       player        51
 ```
+Good luck!
