@@ -69,20 +69,14 @@ void			set_right_f(t_filler *filler)
 void			set_bottom_f(t_filler *filler)
 {
 	int		h;
-	int		w;
 
 	h = filler->piece.h - 1;
 	while (h >= 0)
 	{
-		w = 0;
-		while (w < filler->piece.w)
+		if (ft_strchr(filler->piece.piece[h], '*'))
 		{
-			if (filler->piece.piece[h][w] == '*')
-			{
-				filler->piece.bottom = point_init(w, h);
-				return ;
-			}
-			w++;
+			filler->piece.bottom = point_init(0, h);
+			return ;
 		}
 		h--;
 	}
