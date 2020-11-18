@@ -9,7 +9,7 @@ but you can add she manually via `vim checker.sh`:
 #add "carli" or someone else is this list:
 champs=("abanlin" "hcao" "champely" "grati" "superjeannot")
 ```
-Default count games is 5, you can change `count=5` in script or use flag -g.
+- Default count games is 5, you can change `count=5` in script or use flag -g.
 ### Play with all champions on every map 5 times  
 Use flag -p1 or -p2 with full path  
 `bash ./checker -p1 /path/to/your/player/name.filler`  
