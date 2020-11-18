@@ -24,16 +24,16 @@ if test -f "$FILE"; then
 		i=$(sed -n 's/.\/maps\/// ; /map/p; s/.filler// ; s/.\/champions\/// ; s/.\/// ; /won/p' result.txt | grep won | grep ${player} | wc -l)
 	fi
 	echo -e "${green}Total score:${end_c}"
-	printf '%15s%10d\n' "abanlin" ${abanlin}
-	printf '%15s%10d\n' "champely" ${champely}
-	printf '%15s%10d\n' "carli" ${carli}
-	printf '%15s%10d\n' "grati" ${grati}
-	printf '%15s%10d\n' "hcao" ${hcao}
-	printf '%15s%10d\n' "superjeannot" ${superjeannot}
+	printf '%12s%10d\n' "abanlin" ${abanlin}
+	printf '%12s%10d\n' "champely" ${champely}
+	printf '%12s%10d\n' "carli" ${carli}
+	printf '%12s%10d\n' "grati" ${grati}
+	printf '%12s%10d\n' "hcao" ${hcao}
+	printf '%12s%10d\n' "superjeannot" ${superjeannot}
 	if [ "${player}" = "" ]; then
 		player="player"
-		i=$(sed -n 's/.\/maps\/// ; /map/p; s/.filler// ; s/.\/champions\/// ; s/.\/// ; /won/p' result.txt | grep won | wc -l)
+		i=$(grep won result.txt | wc -l)
 		i=$(($i - $abanlin - $carli - $champely - $grati - $hcao - $superjeannot))
 	fi
-	printf '%15s%10d\n' ${player} $i
+	printf '%12s%10d\n' ${player} $i
 fi
