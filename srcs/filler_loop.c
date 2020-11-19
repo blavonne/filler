@@ -48,19 +48,22 @@ int			filler_loop(t_filler *filler)
 	while (get_next_line(0, &line) > 0)
 	{
 		if (!parse_w_h(filler, line))
-			return (0);
+			break ;
 		if (!map_init(filler))
-			return (0);
+			break ;
 		if (!parse_map(filler, line))
-			return (0);
+			break ;
 		if (!piece_init(filler))
-			return (0);
+			break ;
 		if (!parse_piece(filler, line))
-			return (0);
+			break ;
 		solution(filler);
 		free(line);
 	}
 	free(line);
-	clean_two_dim((void ***)&filler->map.map);
+	if (filler->map.map)
+		clean_two_dim((void ***)&filler->map.map);
+	if (filler->piece.piece)
+		clean_two_dim((void ***)&filler->piece.piece);
 	return (1);
 }

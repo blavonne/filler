@@ -29,18 +29,21 @@ int				map_init(t_filler *filler)
 	int		i;
 
 	i = 0;
-	if (filler->map.w && filler->map.h && !filler->map.map)
+	if (!filler->map.map)
 	{
-		if (!(filler->map.map = (unsigned char **)malloc(sizeof(char *) *\
-		(filler->map.h + 1))))
-			return (0);
-		filler->map.map[filler->map.h] = NULL;
-		while (i < filler->map.h)
+		if (filler->map.w && filler->map.h && !filler->map.map)
 		{
-			if (!(filler->map.map[i] = (unsigned char *)malloc(sizeof(char) *\
-			(filler->map.w + 1))))
-				return (emergency_clean(i, &filler->map.map));
-			i++;
+			if (!(filler->map.map = (unsigned char **)malloc(sizeof(char *) *\
+		(filler->map.h + 1))))
+				return (0);
+			filler->map.map[filler->map.h] = NULL;
+			while (i < filler->map.h)
+			{
+				if (!(filler->map.map[i] =\
+				(unsigned char *)malloc(sizeof(char) * (filler->map.w + 1))))
+					return (emergency_clean(i, &filler->map.map));
+				i++;
+			}
 		}
 	}
 	return (1);
@@ -57,7 +60,8 @@ int				parse_map(t_filler *filler, char *line)
 	{
 		while (i < filler->map.h)
 		{
-			if (get_next_line(0, &tmp) > 0)
+			if (get_next_line(0, &tmp) > 0 && (int)ft_strlen(tmp) ==\
+			filler->map.w + 4)
 			{
 				filler->map.map[i] = (unsigned char *)ft_strcpy(\
 				(char *)filler->map.map[i], tmp + 4);
