@@ -23,11 +23,11 @@ struct			s_player
 struct			s_piece
 {
 	char	**piece;
-	t_point	top; //координата начала расположения фигуры в исходом писе
-	t_point	left;
-	t_point	bottom;
-	t_point	right;
 	t_point	place;
+	int		top; //координата начала расположения фигуры в исходом писе
+	int		left;
+	int		bottom;
+	int		right;
 	int		w;
 	int		h;
 	int		real_h;

@@ -8,15 +8,15 @@ int			find_min(t_filler *filler, int w, int h)
 	int		sum;
 	int		w_default;
 
-	j = filler->piece.top.y;
+	j = filler->piece.top;
 	cross = 0;
 	w_default = w;
 	sum = 0;
-	while (j <= filler->piece.bottom.y && h < filler->map.h)
+	while (j <= filler->piece.bottom && h < filler->map.h)
 	{
-		i = filler->piece.left.x;
+		i = filler->piece.left;
 		w = w_default;
-		while (i <= filler->piece.right.x && w < filler->map.w)
+		while (i <= filler->piece.right && w < filler->map.w)
 		{
 			if (filler->piece.piece[j][i] == '*')
 			{
@@ -35,7 +35,7 @@ int			find_min(t_filler *filler, int w, int h)
 		j++;
 		h++;
 	}
-	if (j == filler->piece.bottom.y + 1 && i == filler->piece.right.x + 1 &&\
+	if (j == filler->piece.bottom + 1 && i == filler->piece.right + 1 &&\
 	cross)
 		return (sum);
 	return (0);

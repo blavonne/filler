@@ -52,8 +52,8 @@ int			find_place(t_filler *filler)
 
 void		normalize_place(t_filler *filler)
 {
-	filler->piece.place.x -= filler->piece.left.x;
-	filler->piece.place.y -= filler->piece.top.y;
+	filler->piece.place.x -= filler->piece.left;
+	filler->piece.place.y -= filler->piece.top;
 }
 
 int			solution(t_filler *filler)
