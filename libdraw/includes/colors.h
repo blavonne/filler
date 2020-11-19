@@ -35,7 +35,7 @@
 # define DUSK			0x0062e3
 # define AZURE			0x007FFF
 # define LIGTH_BLUE		0x03e3fc
-# define ICE			0x435605
+# define GREEN_MID	0x435605
 /*
 ** green-blue-------------------
 */

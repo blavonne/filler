@@ -59,7 +59,7 @@ int			filler_loop(t_filler *filler)
 			break ;
 		ft_strdel(&line);
 	}
-	to_file(filler);
 	ft_strdel(&line);
+	filler_draw(filler);
 	return (1);
 }

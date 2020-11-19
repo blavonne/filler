@@ -1,23 +1,5 @@
 #include "filler.h"
 
-//static int	safe_mlx_create2(t_mlx *mlx, int w, int h)
-//{
-//	if (!mlx->mlx)
-//	{
-//		if (!(mlx->mlx = create_mlx()))
-//			return (0);
-//		if (!(mlx->win = create_win(mlx, w, h, "Filler")))
-//		{
-//			free(mlx->mlx);
-//			return (0);
-//		}
-//		create_background(mlx, w, h, 0xffffff);
-//		mlx->image = create_img(mlx, w, h);
-//		colorize(mlx->image.img, w, h, 0x969F34);
-//	}
-//	return (1);
-//}
-
 void		draw_square(t_point a, int len, t_mlx *mlx, char symb)
 {
 	t_point	b;
@@ -25,7 +7,7 @@ void		draw_square(t_point a, int len, t_mlx *mlx, char symb)
 	t_point	d;
 
 	if (symb == 'X')
-		mlx->argb = int_to_argb(ICE);
+		mlx->argb = int_to_argb(GREEN_MID);
 	else if (symb == 'O')
 		mlx->argb = int_to_argb(YEL_GREEN);
 	else
