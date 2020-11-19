@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   figure_place.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/31 16:44:13 by blavonne          #+#    #+#             */
+/*   Updated: 2020/10/31 16:44:15 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
-int			check_str(t_filler *filler, int w, int h, int j)
+static int		check_str(t_filler *filler, int w, int h, int j)
 {
 	int		i;
 	int		sum;
@@ -29,7 +41,7 @@ int			check_str(t_filler *filler, int w, int h, int j)
 		return (-1);
 }
 
-int			find_min(t_filler *filler, int w, int h)
+int				find_min(t_filler *filler, int w, int h)
 {
 	int		j;
 	int		sum;

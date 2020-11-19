@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/31 16:44:13 by blavonne          #+#    #+#             */
+/*   Updated: 2020/10/31 16:44:15 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
 int				emergency_clean(int last, unsigned char ***arr)
@@ -33,7 +45,6 @@ int				map_init(t_filler *filler)
 	}
 	return (1);
 }
-
 
 int				parse_map(t_filler *filler, char *line)
 {

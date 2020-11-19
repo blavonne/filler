@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_peace.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/31 16:44:13 by blavonne          #+#    #+#             */
+/*   Updated: 2020/10/31 16:44:15 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
 int			piece_init(t_filler *filler)
@@ -15,8 +27,10 @@ int			piece_init(t_filler *filler)
 		{
 			if (!(filler->piece.piece[i] = (char *)malloc(sizeof(char) *\
 			(filler->piece.w + 1))))
+			{
 				return (emergency_clean(i,\
-				(unsigned char ***)&filler->piece.piece));
+					(unsigned char ***)&filler->piece.piece));
+			}
 			i++;
 		}
 	}

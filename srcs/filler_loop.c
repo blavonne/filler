@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   filler_loop.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/31 16:44:13 by blavonne          #+#    #+#             */
+/*   Updated: 2020/10/31 16:44:15 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
 int			parse_w_h(t_filler *filler, char *line)
@@ -45,8 +57,7 @@ int			filler_loop(t_filler *filler)
 			return (0);
 		if (!parse_piece(filler, line))
 			return (0);
-		if (!solution(filler))
-			return (0);
+		solution(filler);
 		free(line);
 	}
 	free(line);

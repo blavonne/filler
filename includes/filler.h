@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   filler.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/31 16:44:13 by blavonne          #+#    #+#             */
+/*   Updated: 2020/10/31 16:44:15 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FILLER_H
 # define FILLER_H
 # include "libft.h"
-# include <fcntl.h> //del
 
 typedef struct s_map	t_map;
 typedef struct s_filler	t_filler;
@@ -25,6 +36,7 @@ struct				s_player
 ** (eqv cutting)
 ** place is calculated place to put figure
 ** real_h is physical height of figure
+** cross is condition when piece overlaps map
 */
 
 struct				s_piece
@@ -55,7 +67,6 @@ struct				s_filler
 	t_map			map;
 	t_piece			piece;
 };
-
 
 int					parse_player(t_filler *filler);
 int					filler_loop(t_filler *filler);

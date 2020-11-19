@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solution.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/31 16:44:13 by blavonne          #+#    #+#             */
+/*   Updated: 2020/10/31 16:44:15 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
-void		start_from(int *y, t_filler *filler)
+static void	start_from(int *y, t_filler *filler)
 {
 	int		h;
 
@@ -18,18 +30,15 @@ void		start_from(int *y, t_filler *filler)
 	}
 }
 
-int			find_place(t_filler *filler)
+static void	find_place(t_filler *filler)
 {
 	int		h;
 	int		w;
 	int		sum;
 	int		min_sum;
 
-	h = 0;
-	sum = 0;
 	min_sum = INT_MAX;
 	start_from(&h, filler);
-	filler->piece.place = point_init(0, 0);
 	while (h < filler->map.h)
 	{
 		w = 0;
@@ -45,10 +54,6 @@ int			find_place(t_filler *filler)
 		}
 		h++;
 	}
-	if (sum)
-		return (1);
-	else
-		return (0);
 }
 
 void		normalize_place(t_filler *filler)
@@ -65,11 +70,11 @@ int			solution(t_filler *filler)
 		cut_figure(filler);
 		find_place(filler);
 		normalize_place(filler);
-		clean_two_dim((void ***)&filler->piece.piece);
 		ft_putnbr(filler->piece.place.y);
 		ft_putchar(32);
 		ft_putnbr(filler->piece.place.x);
 		ft_putchar('\n');
+		clean_two_dim((void ***)&filler->piece.piece);
 		ft_bzero(&filler->piece, sizeof(t_piece));
 	}
 	return (1);

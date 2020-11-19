@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_player.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/31 16:44:13 by blavonne          #+#    #+#             */
+/*   Updated: 2020/10/31 16:44:15 by blavonne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
-int		set_player_sign(char position, t_filler *filler)
+static int		set_player_sign(char position, t_filler *filler)
 {
 	if (position == '1' || position == '2')
 	{
@@ -19,7 +31,7 @@ int		set_player_sign(char position, t_filler *filler)
 	return (0);
 }
 
-int		parse_player(t_filler *filler)
+int				parse_player(t_filler *filler)
 {
 	char	*line;
 
