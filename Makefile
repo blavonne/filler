@@ -6,8 +6,22 @@ INC_DIR = ./includes/
 LIBFT = ./libft/libft.a
 L_ROOT = ./libft/
 L_LIB = -L $(L_ROOT) -lft
-#FLAGS--------------------------------------------------------------------------
-FLAGS = -Wall -Werror -Wextra
+#MLX&FLAGS----------------------------------------------------------------------
+CUR_OS = $(shell sh -c 'uname 2>/dev/null || echo Unknown')
+ifeq ($(CUR_OS), Darwin)
+	MLX_ROOT = ./libdraw/minilibx_mac/
+	LIBS = -framework OpenGl -framework Appkit
+	FLAGS = -Wall -Werror -Wextra
+else
+	MLX_ROOT = ./libdraw/minilibx/
+	LIBS = -lX11 -lXext -lm
+	FLAGS = -Wall -Werror -Wextra -fsanitize=leak
+endif
+#libdraw------------------------------------------------------------------------
+DRAW = ./libdraw/libdraw.a
+D_ROOT = ./libdraw/
+D_LIB = -L $(D_ROOT) -ldraw
+D_INC = ./libdraw/includes/
 #SOURCES------------------------------------------------------------------------
 SRC = main.c\
 	$(SRC_DIR)cleaner.c\
@@ -18,11 +32,11 @@ SRC = main.c\
 	$(SRC_DIR)parse_map.c\
 	$(SRC_DIR)parse_piece.c\
 	$(SRC_DIR)parse_player.c\
-	$(SRC_DIR)point_handler.c\
-	$(SRC_DIR)solution.c
+	$(SRC_DIR)solution.c\
+	$(SRC_DIR)visualize.c
 OBJ = $(SRC:%.c=%.o)
 #HEADERS------------------------------------------------------------------------
-HEADERS = -I $(INC_DIR) -I $(L_ROOT)
+HEADERS = -I $(INC_DIR) -I $(L_ROOT) -I $(MLX_ROOT) -I $(D_INC)
 #builder------------------------------------------------------------------------
 all: $(NAME)
 -include $(OBJ:.o=.d)
@@ -30,18 +44,23 @@ all: $(NAME)
 $(LIBFT): make_libft
 make_libft:
 	$(MAKE) -C $(L_ROOT)
+$(DRAW): make_draw
+make_draw:
+	$(MAKE) -C $(D_ROOT)
 # build filler------------------------------------------------------------------
-$(NAME): $(OBJ) $(LIBFT)
-	gcc -o $(NAME) $(OBJ) $(HEADERS) $(FLAGS) $(L_LIB)
-%.o: %.c $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT) $(MLX) $(DRAW)
+	gcc -o $(NAME) $(OBJ) $(HEADERS) $(FLAGS) $(L_LIB) $(D_LIB) $(LIBS)
+%.o: %.c $(LIBFT) $(MLX) $(DRAW)
 	gcc -c $< -o $@ $(HEADERS) $(FLAGS) -MMD
 # clean section-----------------------------------------------------------------
 clean:
 	$(MAKE) -C $(L_ROOT) clean
+	$(MAKE) -C $(D_ROOT) clean
 	rm -rf $(OBJ)
 	rm -rf $(OBJ:.o=.d)
 fclean: clean
 	$(MAKE) -C $(L_ROOT) fclean
+	$(MAKE) -C $(D_ROOT) fclean
 	rm -rf $(NAME)
 re: fclean all
 .PHONY: all clean fclean re make_libft

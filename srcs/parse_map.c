@@ -66,14 +66,21 @@ int				parse_map(t_filler *filler, char *line)
 				filler->map.map[i] = (unsigned char *)ft_strcpy(\
 				(char *)filler->map.map[i], tmp + 4);
 				ft_strdel(&tmp);
-				i++;
 			}
 			else
 			{
 				ft_strdel(&tmp);
 				return (0);
 			}
+			i++;
 		}
+		if (filler->mlx.mlx)
+		{
+			mlx_key_hook(filler->mlx.win, clean_exit, filler);
+			mlx_hook(filler->mlx.win, 17, 1L << 17, clean_exit2, filler);
+		}
+		usleep(15000);
+		vizualize(filler);
 	}
 	return (1);
 }

@@ -60,10 +60,14 @@ int			filler_loop(t_filler *filler)
 		solution(filler);
 		free(line);
 	}
+	mlx_key_hook(filler->mlx.win, clean_exit, filler);
+	mlx_hook(filler->mlx.win, 17, 1L << 17, clean_exit2, filler);
+	mlx_loop(filler->mlx.mlx);
 	free(line);
 	if (filler->map.map)
 		clean_two_dim((void ***)&filler->map.map);
 	if (filler->piece.piece)
 		clean_two_dim((void ***)&filler->piece.piece);
+	clean_mlx(&filler->mlx);
 	return (1);
 }

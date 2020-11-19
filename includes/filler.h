@@ -13,18 +13,13 @@
 #ifndef FILLER_H
 # define FILLER_H
 # include "libft.h"
+# include "graphics_base.h"
 
 typedef struct s_map	t_map;
 typedef struct s_filler	t_filler;
 typedef struct s_piece	t_piece;
 typedef struct s_player	t_player;
 typedef struct s_point	t_point;
-
-struct				s_point
-{
-	int				x;
-	int				y;
-};
 
 struct				s_player
 {
@@ -66,6 +61,7 @@ struct				s_filler
 	t_player		he;
 	t_map			map;
 	t_piece			piece;
+	t_mlx			mlx;
 };
 
 int					parse_player(t_filler *filler);
@@ -79,9 +75,13 @@ int					piece_init(t_filler *filler);
 int					parse_piece(t_filler *filler, char *line);
 int					solution(t_filler *filler);
 int					heatmap(t_filler *filler);
-t_point				point_init(int x, int y);
 void				cut_figure(t_filler *filler);
 int					find_min(t_filler *filler, int w, int h);
 int					to_file(t_filler *filler);
 void				heat_to_file(t_filler *filler);
+int					vizualize(t_filler *filler);
+void				clean_mlx(t_mlx *mlx);
+int					clean_exit(int key, t_filler *filler);
+int					clean_exit2(t_filler *filler);
+
 #endif
