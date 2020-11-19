@@ -38,6 +38,7 @@ struct				s_piece
 	int				w;
 	int				h;
 	int				real_h;
+	int				cross;
 };
 
 struct				s_map

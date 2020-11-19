@@ -29,6 +29,7 @@ int			find_place(t_filler *filler)
 	sum = 0;
 	min_sum = INT_MAX;
 	start_from(&h, filler);
+	filler->piece.place = point_init(0, 0);
 	while (h < filler->map.h)
 	{
 		w = 0;
