@@ -70,7 +70,6 @@ int			solution(t_filler *filler)
 		ft_putnbr(filler->piece.place.x);
 		ft_putchar('\n');
 		ft_bzero(&filler->piece, sizeof(t_piece));
-		filler->iter++;
 	}
 	return (1);
 }
