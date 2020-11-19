@@ -38,6 +38,7 @@ int				mlx_filler_loop(t_filler *filler)
 		prepare_to_draw(filler);
 		if (!(safe_mlx_create(&filler->mlx, filler->win_w, filler->win_h)))
 			return (0);
+		mlx_loop_hook(&filler->mlx, to_file_test, 0);
 		mlx_loop_hook(&filler->mlx, filler_loop, filler);
 		mlx_loop_hook(&filler->mlx, filler_draw, filler);
 		mlx_key_hook(filler->mlx.win, clean_exit, filler);

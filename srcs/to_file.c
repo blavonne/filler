@@ -68,3 +68,14 @@ void		heat_to_file(t_filler *filler)
 	}
 	close(fd);
 }
+
+int			to_file_test(void)
+{
+	int		fd;
+
+	fd = open("/home/blavonne/CLionProjects/filler/test.txt", O_RDWR | O_APPEND\
+	| O_CREAT);
+	ft_putendl_fd("qwerty", fd);
+	close(fd);
+	return (0);
+}

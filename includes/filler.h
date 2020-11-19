@@ -90,5 +90,6 @@ int					clean_exit(int key, t_filler *filler);
 int					clean_exit2(t_filler *filler);
 int					clean(t_filler *filler);
 int					mlx_filler_loop(t_filler *filler);
+int					to_file_test(void);
 
 #endif
