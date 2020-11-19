@@ -28,3 +28,49 @@ void		clean_two_dim(void ***arr)
 	free(ptr);
 	*arr = NULL;
 }
+
+int			clean_exit(int key, t_filler *filler)
+{
+	if (key == ESC)
+	{
+		clean_mlx(&filler->mlx);
+		if (filler->map.map)
+			clean_two_dim((void ***)&filler->map.map);
+		if (filler->piece.piece)
+			clean_two_dim((void ***)&filler->piece.piece);
+		exit(1);
+	}
+	return (0);
+}
+
+int			clean_exit2(t_filler *filler)
+{
+	clean_mlx(&filler->mlx);
+	if (filler->map.map)
+		clean_two_dim((void ***)&filler->map.map);
+	if (filler->piece.piece)
+		clean_two_dim((void ***)&filler->piece.piece);
+	exit(1);
+}
+
+int			clean(t_filler *filler)
+{
+	clean_mlx(&filler->mlx);
+	if (filler->map.map)
+		clean_two_dim((void ***)&filler->map.map);
+	if (filler->piece.piece)
+		clean_two_dim((void ***)&filler->piece.piece);
+	return (0);
+}
+
+void		clean_mlx(t_mlx *mlx)
+{
+	if (mlx->image.ptr)
+		mlx_destroy_image(mlx->mlx, mlx->image.ptr);
+	if (mlx->background.ptr)
+		mlx_destroy_image(mlx->mlx, mlx->background.ptr);
+	if (mlx->win)
+		mlx_destroy_window(mlx->mlx, mlx->win);
+	if (mlx->mlx)
+		free(mlx->mlx);
+}

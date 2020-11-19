@@ -7,6 +7,6 @@ include_directories(includes)
 include_directories(./libdraw/includes)
 add_subdirectory(libft)
 add_subdirectory(libdraw)
-add_executable(filler main.c srcs/parse_player.c srcs/cleaner.c srcs/filler_loop.c srcs/parse_map.c srcs/parse_piece.c srcs/solution.c srcs/to_file.c srcs/heatmap.c srcs/figure_handler.c srcs/figure_place.c srcs/visualize.c)
+add_executable(filler main.c srcs/parse_player.c srcs/cleaner.c srcs/filler_loop.c srcs/parse_map.c srcs/parse_piece.c srcs/solution.c srcs/to_file.c srcs/heatmap.c srcs/figure_handler.c srcs/figure_place.c srcs/filler_draw.c srcs/mlx_filler_loop.c)
 target_link_libraries(filler libft libdraw -lm -lX11 -lXext
         /home/blavonne/CLionProjects/filler/libdraw/libdraw.a)

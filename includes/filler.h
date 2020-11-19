@@ -62,6 +62,11 @@ struct				s_filler
 	t_map			map;
 	t_piece			piece;
 	t_mlx			mlx;
+	int				win_w;
+	int				win_h;
+	int				square_len;
+	int				margin;
+	int				draw;
 };
 
 int					parse_player(t_filler *filler);
@@ -79,9 +84,11 @@ void				cut_figure(t_filler *filler);
 int					find_min(t_filler *filler, int w, int h);
 int					to_file(t_filler *filler);
 void				heat_to_file(t_filler *filler);
-int					vizualize(t_filler *filler);
+int					filler_draw(t_filler *filler);
 void				clean_mlx(t_mlx *mlx);
 int					clean_exit(int key, t_filler *filler);
 int					clean_exit2(t_filler *filler);
+int					clean(t_filler *filler);
+int					mlx_filler_loop(t_filler *filler);
 
 #endif

@@ -15,10 +15,20 @@
 int		main(void)
 {
 	t_filler filler;
+	char	*line;
 
 	ft_bzero(&filler, sizeof(filler));
-	if (parse_player(&filler))
-		if (!filler_loop(&filler))
-			return (0);
+	if (!parse_player(&filler))
+		return (0);
+	if (get_next_line(0, &line) > 0)
+	{
+		parse_w_h(&filler, line);
+		ft_strdel(&line);
+	}
+	if (!(mlx_filler_loop(&filler)))
+	{
+		clean(&filler);
+		return (0);
+	}
 	return (0);
 }

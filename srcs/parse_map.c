@@ -80,7 +80,7 @@ int				parse_map(t_filler *filler, char *line)
 			mlx_hook(filler->mlx.win, 17, 1L << 17, clean_exit2, filler);
 		}
 		usleep(15000);
-		vizualize(filler);
+		filler_draw(filler);
 	}
 	return (1);
 }

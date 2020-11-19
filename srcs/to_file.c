@@ -24,18 +24,16 @@ int			to_file(t_filler *filler)
 	write(fd, "\nMy sign is: ", 13);
 	write(fd, &filler->me.sign, 1);
 	write(fd, "\nPiece:\n", 8);
-	while (i < filler->piece.h)
+	while (filler->piece.h && i < filler->piece.h)
 	{
-		write(fd, filler->piece.piece[i], ft_strlen(filler->piece.piece[i]));
-		write(fd, "\n", 1);
+		ft_putendl_fd(filler->piece.piece[i], fd);
 		i++;
 	}
 	i = 0;
 	write(fd, "\nMap is:\n", 9);
-	while (i < filler->map.h)
+	while (filler->map.h && i < filler->map.h)
 	{
-		write(fd, filler->map.map[i], ft_strlen((char *)filler->map.map[i]));
-		write(fd, "\n", 1);
+		ft_putendl_fd((char *)filler->map.map[i], fd);
 		i++;
 	}
 	close(fd);

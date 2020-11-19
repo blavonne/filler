@@ -53,14 +53,15 @@ int			parse_piece(t_filler *filler, char *line)
 			{
 				filler->piece.piece[i] = ft_strcpy(filler->piece.piece[i], tmp);
 				ft_strdel(&tmp);
-				i++;
 			}
 			else
 			{
 				ft_strdel(&tmp);
 				return (0);
 			}
+			i++;
 		}
+		filler->draw = 1;
 	}
 	return (1);
 }

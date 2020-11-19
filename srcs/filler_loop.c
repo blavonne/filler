@@ -17,7 +17,7 @@ int			parse_w_h(t_filler *filler, char *line)
 	char		**split;
 	char		type;
 
-	if (ft_strstr(line, "Plateau"))
+	if (ft_strstr(line, "Plateau") && (!filler->map.w || !filler->map.h))
 		type = 'P';
 	else if (ft_strstr(line, "Piece"))
 		type = 'p';
@@ -45,7 +45,7 @@ int			filler_loop(t_filler *filler)
 	char	*line;
 
 	line = 0;
-	while (get_next_line(0, &line) > 0)
+	while (!filler->draw && get_next_line(0, &line) > 0)
 	{
 		if (!parse_w_h(filler, line))
 			break ;
@@ -57,17 +57,9 @@ int			filler_loop(t_filler *filler)
 			break ;
 		if (!parse_piece(filler, line))
 			break ;
-		solution(filler);
-		free(line);
+		ft_strdel(&line);
 	}
-	mlx_key_hook(filler->mlx.win, clean_exit, filler);
-	mlx_hook(filler->mlx.win, 17, 1L << 17, clean_exit2, filler);
-	mlx_loop(filler->mlx.mlx);
-	free(line);
-	if (filler->map.map)
-		clean_two_dim((void ***)&filler->map.map);
-	if (filler->piece.piece)
-		clean_two_dim((void ***)&filler->piece.piece);
-	clean_mlx(&filler->mlx);
+	to_file(filler);
+	ft_strdel(&line);
 	return (1);
 }

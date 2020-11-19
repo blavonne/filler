@@ -33,7 +33,9 @@ SRC = main.c\
 	$(SRC_DIR)parse_piece.c\
 	$(SRC_DIR)parse_player.c\
 	$(SRC_DIR)solution.c\
-	$(SRC_DIR)visualize.c
+	$(SRC_DIR)to_file.c\
+	$(SRC_DIR)filler_draw.c\
+	$(SRC_DIR)mlx_filler_loop.c
 OBJ = $(SRC:%.c=%.o)
 #HEADERS------------------------------------------------------------------------
 HEADERS = -I $(INC_DIR) -I $(L_ROOT) -I $(MLX_ROOT) -I $(D_INC)
