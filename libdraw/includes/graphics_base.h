@@ -23,6 +23,11 @@
 # include "colors.h"
 # include "keyboard.h"
 
+/*
+** This is my own graphics library to draw lines, create safe mlx and do some
+** operations with simple points and complex points. It compiles with minilibx.
+*/
+
 typedef struct		s_point
 {
 	int				x;
