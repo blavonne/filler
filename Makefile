@@ -34,7 +34,6 @@ SRC = main.c\
 	$(SRC_DIR)parse_piece.c\
 	$(SRC_DIR)parse_player.c\
 	$(SRC_DIR)solution.c\
-	$(SRC_DIR)to_file.c\
 	$(SRC_DIR)filler_draw.c\
 	$(SRC_DIR)mlx_filler_loop.c
 OBJ = $(SRC:%.c=%.o)
