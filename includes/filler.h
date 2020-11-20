@@ -83,13 +83,10 @@ int					solution(t_filler *filler);
 int					heatmap(t_filler *filler);
 void				cut_figure(t_filler *filler);
 int					find_min(t_filler *filler, int w, int h);
-int					to_file(t_filler *filler);
-void				heat_to_file(t_filler *filler);
 int					filler_draw(t_filler *filler);
 void				clean_mlx(t_mlx *mlx);
 int					clean_exit(t_filler *filler);
 int					mlx_filler_loop(t_filler *filler);
-int					to_file_test(void);
 int					deal_key(int key, t_filler *filler);
 
 #endif

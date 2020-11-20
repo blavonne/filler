@@ -82,4 +82,4 @@ add_library(libft STATIC
         ft_tolower.c
         ft_toupper.c
         get_next_line.c
-        libft.h)
+        libft.h ft_str_to_file.c)

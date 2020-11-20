@@ -56,6 +56,7 @@ SRC = errors.c\
 	ft_putstr_fd.c\
 	ft_reverse_bits.c\
 	ft_sqrt.c\
+	ft_str_to_file.c\
 	ft_str_tolower.c\
 	ft_str_toupper.c\
 	ft_strcat.c\

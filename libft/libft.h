@@ -140,5 +140,6 @@ void				put_errmsg_and_exit(char type);
 long long int		ft_abs_ll(int nbr);
 double				ft_min(double a, double b);
 double				ft_max(double a, double b);
+int					str_to_file(char *path, int flag, char *str);
 
 #endif
