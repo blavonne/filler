@@ -28,8 +28,7 @@ int			piece_init(t_filler *filler)
 			if (!(filler->piece.piece[i] = (char *)malloc(sizeof(char) *\
 			(filler->piece.w + 1))))
 			{
-				return (emergency_clean(i,\
-					(unsigned char ***)&filler->piece.piece));
+				return (emergency_clean(i, &filler->piece.piece));
 			}
 			i++;
 		}

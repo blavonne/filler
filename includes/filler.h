@@ -65,7 +65,8 @@ struct				s_piece
 
 struct				s_map
 {
-	unsigned char	**map;
+	char			**map;
+	char			**heat;
 	int				w;
 	int				h;
 };
@@ -101,7 +102,7 @@ int					map_init(t_filler *filler);
 int					piece_init(t_filler *filler);
 
 void				clean_two_dim(void ***arr);
-int					emergency_clean(int last, unsigned char ***arr);
+int					emergency_clean(int last, char ***arr);
 void				clean_mlx(t_mlx *mlx);
 int					clean_exit(t_filler *filler);
 
@@ -109,7 +110,8 @@ int					mlx_filler_loop(t_filler *filler);
 int					filler_loop(t_filler *filler);
 int					filler_draw(t_filler *filler);
 int					solution(t_filler *filler);
-int					heatmap(t_filler *filler);
+int					heatmap(t_filler *filler, char find, char replace);
+void				clear_heatmap(t_filler *filler);
 void				cut_figure(t_filler *filler);
 int					find_min(t_filler *filler, int w, int h);
 

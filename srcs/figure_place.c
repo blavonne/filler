@@ -28,7 +28,7 @@ static int		check_str(t_filler *filler, int w, int h, int j)
 			else if (filler->map.map[h][w] == filler->me.sign)
 				filler->piece.cross++;
 			else
-				sum += filler->map.map[h][w];
+				sum += filler->map.heat[h][w];
 			if (filler->piece.cross > 1)
 				return (-1);
 		}

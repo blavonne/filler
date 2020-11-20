@@ -12,16 +12,29 @@
 
 #include "filler.h"
 
-int				emergency_clean(int last, unsigned char ***arr)
+int				heatmap_init(t_filler *filler)
 {
-	unsigned char	**tmp;
+	int		i;
 
-	tmp = *arr;
-	while (--last >= 0)
-		free(tmp[last]);
-	free(tmp);
-	*arr = NULL;
-	return (0);
+	i = 0;
+	if (!filler->map.heat)
+	{
+		if (filler->map.w && filler->map.h)
+		{
+			if (!(filler->map.heat = (char **)malloc(sizeof(char *) * \
+		(filler->map.h + 1))))
+				return (0);
+			filler->map.heat[filler->map.h] = NULL;
+			while (i < filler->map.h)
+			{
+				if (!(filler->map.heat[i] = ft_strnew(filler->map.w)))
+					return (emergency_clean(i, &filler->map.heat));
+				ft_memset(filler->map.heat[i], 1, filler->map.w);
+				i++;
+			}
+		}
+	}
+	return (1);
 }
 
 int				map_init(t_filler *filler)
@@ -31,22 +44,21 @@ int				map_init(t_filler *filler)
 	i = 0;
 	if (!filler->map.map)
 	{
-		if (filler->map.w && filler->map.h && !filler->map.map)
+		if (filler->map.w && filler->map.h)
 		{
-			if (!(filler->map.map = (unsigned char **)malloc(sizeof(char *) *\
+			if (!(filler->map.map = (char **)malloc(sizeof(char *) *\
 		(filler->map.h + 1))))
 				return (0);
 			filler->map.map[filler->map.h] = NULL;
 			while (i < filler->map.h)
 			{
-				if (!(filler->map.map[i] =\
-				(unsigned char *)malloc(sizeof(char) * (filler->map.w + 1))))
+				if (!(filler->map.map[i] = ft_strnew(filler->map.w)))
 					return (emergency_clean(i, &filler->map.map));
 				i++;
 			}
 		}
 	}
-	return (1);
+	return (heatmap_init(filler));
 }
 
 int				parse_map(t_filler *filler, char *line)
@@ -62,8 +74,7 @@ int				parse_map(t_filler *filler, char *line)
 		{
 			if (get_next_line(0, &tmp) > 0 && (int)ft_strlen(tmp) ==\
 			filler->map.w + 4)
-				filler->map.map[i] = (unsigned char *)ft_strcpy(\
-				(char *)filler->map.map[i], tmp + 4);
+				filler->map.map[i] = ft_strcpy(filler->map.map[i], tmp + 4);
 			else
 				i = -21;
 			ft_strdel(&tmp);

@@ -36,6 +36,8 @@ int			clean_exit(t_filler *filler)
 		clean_two_dim((void ***)&filler->map.map);
 	if (filler->piece.piece)
 		clean_two_dim((void ***)&filler->piece.piece);
+	if (filler->map.heat)
+		clean_two_dim((void ***)&filler->map.heat);
 	exit(1);
 }
 
@@ -49,4 +51,16 @@ void		clean_mlx(t_mlx *mlx)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	if (mlx->mlx)
 		free(mlx->mlx);
+}
+
+int			emergency_clean(int last, char ***arr)
+{
+	char	**tmp;
+
+	tmp = *arr;
+	while (--last >= 0)
+		free(tmp[last]);
+	free(tmp);
+	*arr = NULL;
+	return (0);
 }

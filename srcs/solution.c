@@ -19,7 +19,7 @@ static void	start_from(int *y, t_filler *filler)
 	h = 0;
 	while (h < filler->map.h)
 	{
-		if (ft_strchr((char *)filler->map.map[h], filler->me.sign))
+		if (ft_strchr(filler->map.map[h], filler->me.sign))
 		{
 			*y = h - filler->piece.real_h;
 			if (*y < 0)
@@ -62,14 +62,35 @@ void		normalize_place(t_filler *filler)
 	filler->piece.place.y -= filler->piece.top;
 }
 
+void		find_enemy(char **heat, char **map, char sign)
+{
+	int		h;
+	int		w;
+
+	h = 0;
+	while (map[h])
+	{
+		w = 0;
+		while (map[h][w])
+		{
+			if (map[h][w] == sign)
+				heat[h][w] = sign;
+			w++;
+		}
+		h++;
+	}
+}
+
 int			solution(t_filler *filler)
 {
-	if (filler->map.map && filler->piece.piece)
+	if (filler->map.map && filler->piece.piece && filler->map.heat)
 	{
-		heatmap(filler);
+		find_enemy(filler->map.heat, filler->map.map, filler->he.sign);
+		heatmap(filler, filler->he.sign, 2);
 		cut_figure(filler);
 		find_place(filler);
 		normalize_place(filler);
+		clear_heatmap(filler);
 		ft_putnbr(filler->piece.place.y);
 		ft_putchar(32);
 		ft_putnbr(filler->piece.place.x);
