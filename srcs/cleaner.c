@@ -29,21 +29,7 @@ void		clean_two_dim(void ***arr)
 	*arr = NULL;
 }
 
-int			clean_exit(int key, t_filler *filler)
-{
-	if (key == ESC)
-	{
-		clean_mlx(&filler->mlx);
-		if (filler->map.map)
-			clean_two_dim((void ***)&filler->map.map);
-		if (filler->piece.piece)
-			clean_two_dim((void ***)&filler->piece.piece);
-		exit(1);
-	}
-	return (0);
-}
-
-int			clean_exit2(t_filler *filler)
+int			clean_exit(t_filler *filler)
 {
 	clean_mlx(&filler->mlx);
 	if (filler->map.map)
@@ -51,16 +37,6 @@ int			clean_exit2(t_filler *filler)
 	if (filler->piece.piece)
 		clean_two_dim((void ***)&filler->piece.piece);
 	exit(1);
-}
-
-int			clean(t_filler *filler)
-{
-	clean_mlx(&filler->mlx);
-	if (filler->map.map)
-		clean_two_dim((void ***)&filler->map.map);
-	if (filler->piece.piece)
-		clean_two_dim((void ***)&filler->piece.piece);
-	return (0);
 }
 
 void		clean_mlx(t_mlx *mlx)

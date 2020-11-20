@@ -2,9 +2,11 @@
 
 void			put_img_to_window(t_mlx *mlx, int x, int y)
 {
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->background.ptr,\
+	if (mlx->background.ptr)
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->background.ptr,\
 	x, y);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.ptr,\
+	if (mlx->image.ptr)
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->image.ptr,\
 	x, y);
 }
 

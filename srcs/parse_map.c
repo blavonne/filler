@@ -58,28 +58,20 @@ int				parse_map(t_filler *filler, char *line)
 	i = 0;
 	if (line && !ft_strncmp(line, "    0123", 8))
 	{
-		while (i < filler->map.h)
+		while (i >= 0 && i < filler->map.h)
 		{
 			if (get_next_line(0, &tmp) > 0 && (int)ft_strlen(tmp) ==\
 			filler->map.w + 4)
-			{
 				filler->map.map[i] = (unsigned char *)ft_strcpy(\
 				(char *)filler->map.map[i], tmp + 4);
-				ft_strdel(&tmp);
-			}
 			else
-			{
-				ft_strdel(&tmp);
-				return (0);
-			}
+				i = -21;
+			ft_strdel(&tmp);
 			i++;
 		}
-		if (filler->mlx.mlx)
-		{
-			mlx_key_hook(filler->mlx.win, clean_exit, filler);
-			mlx_hook(filler->mlx.win, 17, 1L << 17, clean_exit2, filler);
-		}
-		usleep(15000);
+		if (i < 0)
+			return (0);
+		usleep(filler->delay);
 		filler_draw(filler);
 	}
 	return (1);

@@ -57,16 +57,17 @@ struct				s_map
 
 struct				s_filler
 {
+	t_mlx			mlx;
 	t_player		me;
 	t_player		he;
 	t_map			map;
 	t_piece			piece;
-	t_mlx			mlx;
 	int				win_w;
 	int				win_h;
 	int				square_len;
 	int				margin;
 	int				draw;
+	int				delay;
 };
 
 int					parse_player(t_filler *filler);
@@ -86,10 +87,9 @@ int					to_file(t_filler *filler);
 void				heat_to_file(t_filler *filler);
 int					filler_draw(t_filler *filler);
 void				clean_mlx(t_mlx *mlx);
-int					clean_exit(int key, t_filler *filler);
-int					clean_exit2(t_filler *filler);
-int					clean(t_filler *filler);
+int					clean_exit(t_filler *filler);
 int					mlx_filler_loop(t_filler *filler);
 int					to_file_test(void);
+int					deal_key(int key, t_filler *filler);
 
 #endif

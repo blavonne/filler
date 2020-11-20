@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blavonne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,28 +12,29 @@
 
 #include "filler.h"
 
-int		main(void)
+static void	set_delay(t_filler *filler, int key)
 {
-	t_filler	filler;
-	char		*line;
+	if (key == NUM_MINUS)
+	{
+		if (filler->delay - 100000 >= 0)
+			filler->delay -= 100000;
+		else
+			filler->delay = 0;
+	}
+	else if (key == NUM_PLUS)
+	{
+		if (filler->delay + 100000 <= 1000000)
+			filler->delay += 100000;
+		else
+			filler->delay = 1000000;
+	}
+}
 
-	ft_bzero(&filler, sizeof(filler));
-	if (!parse_player(&filler))
-		return (0);
-	if (get_next_line(0, &line) > 0)
-	{
-		parse_w_h(&filler, line);
-		ft_strdel(&line);
-	}
-	else
-	{
-		ft_strdel(&line);
-		return (0);
-	}
-	if (!(mlx_filler_loop(&filler)))
-	{
-		clean_exit(&filler);
-		return (0);
-	}
+int			deal_key(int key, t_filler *filler)
+{
+	if (key == ESC)
+		clean_exit(filler);
+	else if (key == NUM_PLUS || key == NUM_MINUS)
+		set_delay(filler, key);
 	return (0);
 }

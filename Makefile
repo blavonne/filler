@@ -25,6 +25,7 @@ D_INC = ./libdraw/includes/
 #SOURCES------------------------------------------------------------------------
 SRC = main.c\
 	$(SRC_DIR)cleaner.c\
+	$(SRC_DIR)keyboard.c\
 	$(SRC_DIR)figure_handler.c\
 	$(SRC_DIR)figure_place.c\
 	$(SRC_DIR)filler_loop.c\
