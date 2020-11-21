@@ -24,7 +24,7 @@ void			clear_heatmap(t_filler *filler)
 	}
 }
 
-int				check_round(t_filler *filler, int w, int h, char find)
+static int		check_round(t_filler *filler, int w, int h, char find)
 {
 	if ((w - 1 >= 0 && filler->map.heat[h][w - 1] == find) || \
 	(w + 1 < filler->map.w && filler->map.heat[h][w + 1] == find) || \
@@ -41,7 +41,7 @@ int				check_round(t_filler *filler, int w, int h, char find)
 	return (0);
 }
 
-int				is_empty(char **map, int h)
+static int		is_empty(char **map, int h)
 {
 	int		i;
 
@@ -55,24 +55,12 @@ int				is_empty(char **map, int h)
 	return (1);
 }
 
-char			correction(char c)
-{
-	if (c == 88)
-		c++;
-	return (c);
-}
-
-/*
-** начнать с he.sign, 1
-*/
-
 int				heatmap(t_filler *filler, char find, char replace)
 {
 	int		h;
 	int		w;
 
 	h = 0;
-	replace = correction(replace);
 	while (h < filler->map.h)
 	{
 		w = 0;

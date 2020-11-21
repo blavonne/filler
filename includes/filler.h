@@ -53,16 +53,6 @@ struct				s_piece
 	int				cross;
 };
 
-/*
-** unsigned char: cause the biggest map is 100x100 and the worst distance
-** between (0;0) and (99;98) is max((|0 - 99|), (|0 - 98|)) = 99
-** first 32 non-printable symbols we skip, so we should keep range
-** from 32 to (99 + 32 + 3) = 131 (this 3 symbols are '.', 'O' and 'X')
-** if we want to print heatmap to debug;
-** unsigned char range is between 0 and 255 so it fits good to our goal
-** and we can use no int[][]
-*/
-
 struct				s_map
 {
 	char			**map;
